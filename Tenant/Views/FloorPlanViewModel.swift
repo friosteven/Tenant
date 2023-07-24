@@ -11,14 +11,16 @@ import Foundation
 class FloorPlanViewModel: ObservableObject {
 
     @Published var service = HomeService()
+    @Published var resourceArr: [Resource] = []
 
     func getImageURL() {
 
         Task {
             do {
                 let result = await service.sendRequest(endpoint: HomeEndpoint.getImageURL,
-                                                           responseModel: Resource.self)
-                print(result)
+                                                       responseModel: [Resource].self)
+                self.resourceArr = try result.get()
+                print(self.resourceArr)
             }
         }
 

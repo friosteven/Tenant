@@ -14,11 +14,10 @@ import SwiftUI
 
 struct FloorPlanView: View {
     @ObservedObject var viewModel = FloorPlanViewModel()
-    @State private var resources: [Resource]?
 
     var body: some View {
         VStack {
-            if let resources = resources {
+            if let resources = viewModel.resourceArr {
                 ForEach(resources, id: \.id) { resources in
                     Text(resources.imageURL)
                     Text(resources.description)
