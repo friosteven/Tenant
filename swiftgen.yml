@@ -1,0 +1,12 @@
+strings:
+  inputs: Tenant/Resources/Strings/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: Tenant/Resources/Generated/SwiftGen/Strings.swift
+xcassets:
+  inputs:
+    - Tenant/Resources/Assets/ColorAssets.xcassets
+    - Tenant/Resources/Assets/ImageAssets.xcassets
+  outputs:
+    - templateName: swift5
+      output: Tenant/Resources/Generated/SwiftGen/Assets/Assets.swift
