@@ -36,6 +36,8 @@
 		B01351292A6DF231000F9ADF /* HostEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostEnvironment.swift; sourceTree = "<group>"; };
 		B013512B2A6DF255000F9ADF /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		B013512F2A6DF2E2000F9ADF /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
+		B018103A2A6EA1F10086B871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B018103B2A6EA35D0086B871 /* TenantConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TenantConfig.xcconfig; sourceTree = "<group>"; };
 		B01854572A69818500114B69 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		B03C373D2A51437F00DEAE7C /* Tenant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tenant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C37402A51437F00DEAE7C /* TenantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantApp.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		B03C373F2A51437F00DEAE7C /* Tenant */ = {
 			isa = PBXGroup;
 			children = (
+				B018103A2A6EA1F10086B871 /* Info.plist */,
 				B0E5CF712A539DE8005084BE /* Network */,
 				B0E5CF6B2A52F863005084BE /* Singleton */,
 				B0AE8F392A525570002996FF /* Views */,
@@ -130,6 +133,7 @@
 				B03C37422A51437F00DEAE7C /* ContentView.swift */,
 				B03C37462A51438000DEAE7C /* Preview Content */,
 				B01351272A6DF129000F9ADF /* APP_SECRETS.swift */,
+				B018103B2A6EA35D0086B871 /* TenantConfig.xcconfig */,
 			);
 			path = Tenant;
 			sourceTree = "<group>";
@@ -357,6 +361,7 @@
 /* Begin XCBuildConfiguration section */
 		B03C37492A51438000DEAE7C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B018103B2A6EA35D0086B871 /* TenantConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -479,6 +484,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Tenant/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tenant/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -507,6 +513,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Tenant/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Tenant/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
