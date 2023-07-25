@@ -13,6 +13,9 @@
 		B013512A2A6DF231000F9ADF /* HostEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01351292A6DF231000F9ADF /* HostEnvironment.swift */; };
 		B013512C2A6DF255000F9ADF /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B013512B2A6DF255000F9ADF /* RequestError.swift */; };
 		B01351302A6DF2E2000F9ADF /* HomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B013512F2A6DF2E2000F9ADF /* HomeServices.swift */; };
+		B018103E2A6EB9A60086B871 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B018103D2A6EB9A60086B871 /* Kingfisher */; };
+		B01810412A6EB9B60086B871 /* PocketSVG in Frameworks */ = {isa = PBXBuildFile; productRef = B01810402A6EB9B60086B871 /* PocketSVG */; };
+		B01810432A6EB9C80086B871 /* SVGProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01810422A6EB9C80086B871 /* SVGProcessor.swift */; };
 		B01854582A69818500114B69 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01854572A69818500114B69 /* Endpoint.swift */; };
 		B03C37412A51437F00DEAE7C /* TenantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C37402A51437F00DEAE7C /* TenantApp.swift */; };
 		B03C37432A51437F00DEAE7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03C37422A51437F00DEAE7C /* ContentView.swift */; };
@@ -25,6 +28,8 @@
 		B0AE8F352A525148002996FF /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AE8F342A525148002996FF /* Resource.swift */; };
 		B0AE8F3B2A5255D0002996FF /* FloorPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AE8F3A2A5255D0002996FF /* FloorPlanView.swift */; };
 		B0AE8F3D2A52D7AA002996FF /* FloorPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AE8F3C2A52D7AA002996FF /* FloorPlanViewModel.swift */; };
+		B0D665CF2A6FEF2A00260985 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D665CE2A6FEF2A00260985 /* View+Extension.swift */; };
+		B0D665D12A6FF35100260985 /* BaseImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D665D02A6FF35100260985 /* BaseImage.swift */; };
 		B0E5CF6D2A52F86E005084BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E5CF6C2A52F86E005084BE /* AppDelegate.swift */; };
 		B0E5CF702A52FD80005084BE /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = B0E5CF6F2A52FD80005084BE /* netfox */; };
 /* End PBXBuildFile section */
@@ -38,6 +43,7 @@
 		B013512F2A6DF2E2000F9ADF /* HomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServices.swift; sourceTree = "<group>"; };
 		B018103A2A6EA1F10086B871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B018103B2A6EA35D0086B871 /* TenantConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TenantConfig.xcconfig; sourceTree = "<group>"; };
+		B01810422A6EB9C80086B871 /* SVGProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGProcessor.swift; sourceTree = "<group>"; };
 		B01854572A69818500114B69 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		B03C373D2A51437F00DEAE7C /* Tenant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tenant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03C37402A51437F00DEAE7C /* TenantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenantApp.swift; sourceTree = "<group>"; };
@@ -51,6 +57,8 @@
 		B0AE8F342A525148002996FF /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		B0AE8F3A2A5255D0002996FF /* FloorPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorPlanView.swift; sourceTree = "<group>"; };
 		B0AE8F3C2A52D7AA002996FF /* FloorPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorPlanViewModel.swift; sourceTree = "<group>"; };
+		B0D665CE2A6FEF2A00260985 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		B0D665D02A6FF35100260985 /* BaseImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseImage.swift; sourceTree = "<group>"; };
 		B0E5CF6C2A52F86E005084BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01810412A6EB9B60086B871 /* PocketSVG in Frameworks */,
+				B018103E2A6EB9A60086B871 /* Kingfisher in Frameworks */,
 				B0E5CF702A52FD80005084BE /* netfox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +91,7 @@
 		B01351242A6DEF82000F9ADF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B0AE8F332A525107002996FF /* Models */,
 				B013512E2A6DF2D0000F9ADF /* Services */,
 				B013512D2A6DF2C0000F9ADF /* Endpoint */,
 			);
@@ -122,6 +133,7 @@
 		B03C373F2A51437F00DEAE7C /* Tenant */ = {
 			isa = PBXGroup;
 			children = (
+				B0D665CD2A6FEF1000260985 /* Extensions */,
 				B018103A2A6EA1F10086B871 /* Info.plist */,
 				B0E5CF712A539DE8005084BE /* Network */,
 				B0E5CF6B2A52F863005084BE /* Singleton */,
@@ -149,6 +161,8 @@
 		B06BC1742A516A9E00D82E74 /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
+				B0D665D02A6FF35100260985 /* BaseImage.swift */,
+				B01810422A6EB9C80086B871 /* SVGProcessor.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -208,7 +222,8 @@
 			children = (
 				B0AE8F342A525148002996FF /* Resource.swift */,
 			);
-			path = Models;
+			name = Models;
+			path = ../Models;
 			sourceTree = "<group>";
 		};
 		B0AE8F392A525570002996FF /* Views */ = {
@@ -218,6 +233,14 @@
 				B0AE8F3C2A52D7AA002996FF /* FloorPlanViewModel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B0D665CD2A6FEF1000260985 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B0D665CE2A6FEF2A00260985 /* View+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B0E5CF6B2A52F863005084BE /* Singleton */ = {
@@ -233,7 +256,6 @@
 			children = (
 				B01351242A6DEF82000F9ADF /* Home */,
 				B01351222A6DEF45000F9ADF /* Base */,
-				B0AE8F332A525107002996FF /* Models */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -257,6 +279,8 @@
 			name = Tenant;
 			packageProductDependencies = (
 				B0E5CF6F2A52FD80005084BE /* netfox */,
+				B018103D2A6EB9A60086B871 /* Kingfisher */,
+				B01810402A6EB9B60086B871 /* PocketSVG */,
 			);
 			productName = Tenant;
 			productReference = B03C373D2A51437F00DEAE7C /* Tenant.app */;
@@ -288,6 +312,8 @@
 			mainGroup = B03C37342A51437F00DEAE7C;
 			packageReferences = (
 				B0E5CF6E2A52FD80005084BE /* XCRemoteSwiftPackageReference "netfox" */,
+				B018103C2A6EB9A60086B871 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B018103F2A6EB9B60086B871 /* XCRemoteSwiftPackageReference "PocketSVG" */,
 			);
 			productRefGroup = B03C373E2A51437F00DEAE7C /* Products */;
 			projectDirPath = "";
@@ -340,13 +366,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B01854582A69818500114B69 /* Endpoint.swift in Sources */,
+				B0D665D12A6FF35100260985 /* BaseImage.swift in Sources */,
 				B0E5CF6D2A52F86E005084BE /* AppDelegate.swift in Sources */,
 				B013512A2A6DF231000F9ADF /* HostEnvironment.swift in Sources */,
+				B01810432A6EB9C80086B871 /* SVGProcessor.swift in Sources */,
 				B0AE8F3B2A5255D0002996FF /* FloorPlanView.swift in Sources */,
 				B0AE8F352A525148002996FF /* Resource.swift in Sources */,
 				B03C37432A51437F00DEAE7C /* ContentView.swift in Sources */,
 				B0AE8F3D2A52D7AA002996FF /* FloorPlanViewModel.swift in Sources */,
 				B01351282A6DF129000F9ADF /* APP_SECRETS.swift in Sources */,
+				B0D665CF2A6FEF2A00260985 /* View+Extension.swift in Sources */,
 				B01351262A6DEFBE000F9ADF /* HomeEndpoint.swift in Sources */,
 				B01351302A6DF2E2000F9ADF /* HomeServices.swift in Sources */,
 				B01351212A6D19EC000F9ADF /* HTTPClient.swift in Sources */,
@@ -556,6 +585,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B018103C2A6EB9A60086B871 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		B018103F2A6EB9B60086B871 /* XCRemoteSwiftPackageReference "PocketSVG" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pocketsvg/PocketSVG";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		B0E5CF6E2A52FD80005084BE /* XCRemoteSwiftPackageReference "netfox" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kasketis/netfox";
@@ -567,6 +612,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B018103D2A6EB9A60086B871 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B018103C2A6EB9A60086B871 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		B01810402A6EB9B60086B871 /* PocketSVG */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B018103F2A6EB9B60086B871 /* XCRemoteSwiftPackageReference "PocketSVG" */;
+			productName = PocketSVG;
+		};
 		B0E5CF6F2A52FD80005084BE /* netfox */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B0E5CF6E2A52FD80005084BE /* XCRemoteSwiftPackageReference "netfox" */;

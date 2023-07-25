@@ -17,14 +17,15 @@ class FloorPlanViewModel: ObservableObject {
 
         Task {
             do {
-                let result = await service.sendRequest(endpoint: HomeEndpoint.getImageURL,
-                                                       responseModel: [Resource].self)
+                let result = await service.sendRequest(
+                    endpoint: HomeEndpoint.getImageURL,
+                    responseModel: [Resource].self
+                )
                 self.resourceArr = try result.get()
                 print(self.resourceArr)
             }
         }
 
     }
-
 }
 

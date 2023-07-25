@@ -7,15 +7,19 @@
 
 import Foundation
 
-struct Resource: Codable {
+struct Resource: Codable, Equatable {
     let id: Int
     let imageURL: String
     let description, createdAt: String
+    let imageWidth: Int
+    let imageHeight: Int
 
     enum CodingKeys: String, CodingKey {
         case id
         case imageURL = "image_url"
         case description
         case createdAt = "created_at"
+        case imageWidth = "image_width"
+        case imageHeight = "image_height"
     }
 }
