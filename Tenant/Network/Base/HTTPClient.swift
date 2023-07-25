@@ -53,6 +53,7 @@ extension HTTPClient {
         urlComponents.scheme = endpoint.scheme
         urlComponents.host = endpoint.host
         urlComponents.path = endpoint.path
+        urlComponents.queryItems = endpoint.query
 
         return urlComponents
     }
@@ -62,9 +63,6 @@ extension HTTPClient {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = endpoint.method.rawValue
         urlRequest.allHTTPHeaderFields = endpoint.header
-        if let queryItems = endpoint.query {
-            urlRequest.url?.append(queryItems: queryItems)
-        }
         return urlRequest
     }
 }
