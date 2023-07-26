@@ -10,6 +10,7 @@ import Foundation
 enum HomeEndpoint {
     case getResources
     case getImageURL
+    case getTenant
 }
 
 extension HomeEndpoint: Endpoint {
@@ -23,10 +24,8 @@ extension HomeEndpoint: Endpoint {
     }
     var host: String {
         switch self {
-        case .getImageURL:
-            return HostEnvironment.supabase(env: .dev).getHostURL()
         default:
-            return ""
+            return HostEnvironment.supabase(env: .dev).getHostURL()
         }
     }
 
@@ -36,12 +35,13 @@ extension HomeEndpoint: Endpoint {
             return "/rest/v1/Resources"
         case .getImageURL:
             return "/rest/v1/Resources"
+        case .getTenant:
+            return "/rest/v1/Tenants"
         }
     }
 
     var method: RequestMethod {
         switch self {
-
         default:
             return .get
         }

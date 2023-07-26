@@ -27,6 +27,7 @@ struct FloorPlanView: View {
         }
         .onAppear(perform: {
             viewModel.getImageURL()
+            viewModel.getTenant()
         })
         .onChange(of: viewModel.resourceArr.first) { resource in
             loadSVG(resource: resource)
