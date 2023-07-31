@@ -30,6 +30,11 @@
 		B0AE8F3D2A52D7AA002996FF /* FloorPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0AE8F3C2A52D7AA002996FF /* FloorPlanViewModel.swift */; };
 		B0D665CF2A6FEF2A00260985 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D665CE2A6FEF2A00260985 /* View+Extension.swift */; };
 		B0D665D12A6FF35100260985 /* BaseImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D665D02A6FF35100260985 /* BaseImage.swift */; };
+		B0D665D32A6FFB4600260985 /* PinchZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D665D22A6FFB4600260985 /* PinchZoom.swift */; };
+		B0D665D52A6FFB9000260985 /* CustomOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D665D42A6FFB9000260985 /* CustomOverlay.swift */; };
+		B0D665D72A70A12F00260985 /* Tenant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D665D62A70A12F00260985 /* Tenant.swift */; };
+		B0D665D92A70AA9100260985 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D665D82A70AA9100260985 /* Assets.swift */; };
+		B0D665DB2A70AACE00260985 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D665DA2A70AACE00260985 /* Color+Extension.swift */; };
 		B0E5CF6D2A52F86E005084BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E5CF6C2A52F86E005084BE /* AppDelegate.swift */; };
 		B0E5CF702A52FD80005084BE /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = B0E5CF6F2A52FD80005084BE /* netfox */; };
 /* End PBXBuildFile section */
@@ -59,6 +64,11 @@
 		B0AE8F3C2A52D7AA002996FF /* FloorPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorPlanViewModel.swift; sourceTree = "<group>"; };
 		B0D665CE2A6FEF2A00260985 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		B0D665D02A6FF35100260985 /* BaseImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseImage.swift; sourceTree = "<group>"; };
+		B0D665D22A6FFB4600260985 /* PinchZoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchZoom.swift; sourceTree = "<group>"; };
+		B0D665D42A6FFB9000260985 /* CustomOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOverlay.swift; sourceTree = "<group>"; };
+		B0D665D62A70A12F00260985 /* Tenant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tenant.swift; sourceTree = "<group>"; };
+		B0D665D82A70AA9100260985 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		B0D665DA2A70AACE00260985 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		B0E5CF6C2A52F86E005084BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +173,8 @@
 			children = (
 				B0D665D02A6FF35100260985 /* BaseImage.swift */,
 				B01810422A6EB9C80086B871 /* SVGProcessor.swift */,
+				B0D665D22A6FFB4600260985 /* PinchZoom.swift */,
+				B0D665D42A6FFB9000260985 /* CustomOverlay.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -213,6 +225,7 @@
 		B06BC18C2A51BC7100D82E74 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B0D665D82A70AA9100260985 /* Assets.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -221,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				B0AE8F342A525148002996FF /* Resource.swift */,
+				B0D665D62A70A12F00260985 /* Tenant.swift */,
 			);
 			name = Models;
 			path = ../Models;
@@ -239,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				B0D665CE2A6FEF2A00260985 /* View+Extension.swift */,
+				B0D665DA2A70AACE00260985 /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,7 +385,11 @@
 				B0E5CF6D2A52F86E005084BE /* AppDelegate.swift in Sources */,
 				B013512A2A6DF231000F9ADF /* HostEnvironment.swift in Sources */,
 				B01810432A6EB9C80086B871 /* SVGProcessor.swift in Sources */,
+				B0D665D52A6FFB9000260985 /* CustomOverlay.swift in Sources */,
+				B0D665D32A6FFB4600260985 /* PinchZoom.swift in Sources */,
 				B0AE8F3B2A5255D0002996FF /* FloorPlanView.swift in Sources */,
+				B0D665D92A70AA9100260985 /* Assets.swift in Sources */,
+				B0D665DB2A70AACE00260985 /* Color+Extension.swift in Sources */,
 				B0AE8F352A525148002996FF /* Resource.swift in Sources */,
 				B03C37432A51437F00DEAE7C /* ContentView.swift in Sources */,
 				B0AE8F3D2A52D7AA002996FF /* FloorPlanViewModel.swift in Sources */,
@@ -380,6 +399,7 @@
 				B01351302A6DF2E2000F9ADF /* HomeServices.swift in Sources */,
 				B01351212A6D19EC000F9ADF /* HTTPClient.swift in Sources */,
 				B03C37412A51437F00DEAE7C /* TenantApp.swift in Sources */,
+				B0D665D72A70A12F00260985 /* Tenant.swift in Sources */,
 				B013512C2A6DF255000F9ADF /* RequestError.swift in Sources */,
 				B0AE8F2F2A524ED5002996FF /* BaseModel.swift in Sources */,
 			);

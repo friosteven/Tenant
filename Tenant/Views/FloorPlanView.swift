@@ -16,13 +16,18 @@ import Kingfisher
 struct FloorPlanView: View {
     @ObservedObject var viewModel = FloorPlanViewModel()
     @State private var image = UIImage()
+    @State private var currentScale: CGFloat = 1
+    @State private var floorPlanSize: CGSize = CGSize(width: 0, height: 0)
 
     var body: some View {
         VStack {
             if let resources = viewModel.resourceArr.first {
                 BaseImage(image: image)
-                    .frame(width: CGFloat(resources.imageWidth) * 0.75,
-                           height: CGFloat(resources.imageHeight) * 0.75)
+                    .frame(width: CGFloat(resources.imageWidth),
+                           height: CGFloat(resources.imageHeight))
+                    .modifier(ImageModifier(imageSize: floorPlanSize,
+                                            currentScale: $currentScale,
+                                            tenantArr: $viewModel.tenantArr))
             }
         }
         .onAppear(perform: {
@@ -30,24 +35,26 @@ struct FloorPlanView: View {
             viewModel.getTenant()
         })
         .onChange(of: viewModel.resourceArr.first) { resource in
-            loadSVG(resource: resource)
+            if let resource = resource {
+                floorPlanSize = CGSize(width: CGFloat(resource.imageWidth),
+                                       height: CGFloat(resource.imageHeight))
+                loadSVG(resource: resource)
+            }
         }
     }
 }
 
 extension FloorPlanView {
-    func loadSVG(resource: Resource?) {
-        if let resource = resource {
-            guard let url = URL(string: resource.imageURL) else { return }
-            let size = CGSize(width: resource.imageWidth,
-                              height: resource.imageHeight)
+    func loadSVG(resource: Resource) {
+        guard let url = URL(string: resource.imageURL) else { return }
+        let size = CGSize(width: CGFloat(resource.imageWidth),
+                          height: CGFloat(resource.imageHeight))
 
-            renderSVGImage(url: url,
-                           size: size,
-                           image: { image in
-                self.image = image
-            })
-        }
+        renderSVGImage(url: url,
+                       size: size,
+                       image: { image in
+            self.image = image
+        })
     }
 }
 

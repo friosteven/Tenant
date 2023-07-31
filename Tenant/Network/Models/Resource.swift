@@ -11,8 +11,8 @@ struct Resource: Codable, Equatable {
     let id: Int
     let imageURL: String
     let description, createdAt: String
-    let imageWidth: Int
-    let imageHeight: Int
+    let imageWidth: Float
+    let imageHeight: Float
 
     enum CodingKeys: String, CodingKey {
         case id

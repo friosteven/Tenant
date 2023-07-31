@@ -12,7 +12,7 @@ class FloorPlanViewModel: ObservableObject {
 
     @Published var service = HomeService()
     @Published var resourceArr: [Resource] = []
-    @Published var tenantArr: [Tenant] = []
+    @Published var tenantArr: [Tenant]? = []
 
     func getImageURL() {
 

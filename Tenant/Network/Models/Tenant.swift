@@ -7,11 +7,11 @@
 import Foundation
 
 // MARK: - Tenant
-struct Tenant: Codable {
+struct Tenant: Codable, Hashable {
     let id: Int
     let createdAt, name: String
     let type: Int
-    let x, y, width, height: Double
+    let x, y, width, height: Float
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -21,3 +21,4 @@ struct Tenant: Codable {
 }
 
 typealias Tenants = [Tenant]
+
