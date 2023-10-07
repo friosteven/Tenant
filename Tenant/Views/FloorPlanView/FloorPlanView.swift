@@ -18,6 +18,8 @@ struct FloorPlanView: View {
     @State private var image = UIImage()
     @State private var currentScale: CGFloat = 1
     @State private var floorPlanSize: CGSize = CGSize(width: 0, height: 0)
+    @State private var isBottomSheetOpen: Bool = false
+    @State private var tenant: Tenant?
 
     var body: some View {
         VStack {
@@ -27,12 +29,19 @@ struct FloorPlanView: View {
                            height: CGFloat(resources.imageHeight))
                     .modifier(ImageModifier(imageSize: floorPlanSize,
                                             currentScale: $currentScale,
-                                            tenantArr: $viewModel.tenantArr))
+                                            tenantArr: $viewModel.tenantArr,
+                                           didTap: { tenant in
+                        self.tenant = tenant
+
+                        isBottomSheetOpen = true
+                    }))
             }
         }
         .onAppear(perform: {
             viewModel.getImageURL()
             viewModel.getTenant()
+        })
+        .onChange(of: tenant, perform: { _ in
         })
         .onChange(of: viewModel.resourceArr.first) { resource in
             if let resource = resource {
@@ -41,6 +50,10 @@ struct FloorPlanView: View {
                 loadSVG(resource: resource)
             }
         }
+        .sheet(isPresented: $isBottomSheetOpen, content: {
+            Text(tenant?.name ?? "").presentationDetents([.fraction(0.2)])
+        })
+        
     }
 }
 

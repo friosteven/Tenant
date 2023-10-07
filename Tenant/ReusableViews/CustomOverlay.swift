@@ -36,8 +36,8 @@ class CustomOverlay {
         /// 2. Think of the spacing as a seat
         /// 3. Assume how many seats can fit on that space
         /// Note: This should be dynamic per floorplan
-        let distanceBetweenXSeats = getSeatOffsetByOfficeId(officeId: officeId).horizontal
-        let distanceBetweenYSeats = getSeatOffsetByOfficeId(officeId: officeId).vertical
+//        let distanceBetweenXSeats = getSeatOffsetByOfficeId(officeId: officeId).horizontal
+//        let distanceBetweenYSeats = getSeatOffsetByOfficeId(officeId: officeId).vertical
 
         return ZStack {
             Rectangle()
@@ -47,13 +47,13 @@ class CustomOverlay {
                 .position(x: overlay.xAxis,
                           y: overlay.yAxis)
                 .opacity(overlayType.opacity)
-            Rectangle()
-                .fill(Asset.ColorAssets.fefefe.swiftUIColor)
-                    .frame(width: overlay.width * distanceBetweenXSeats,
-                           height: overlay.height * distanceBetweenYSeats)
-                    .position(x: overlay.xAxis,
-                              y: overlay.yAxis)
-                    .opacity(0.01)
+//            Rectangle()
+//                .fill(Asset.ColorAssets.fefefe.swiftUIColor)
+//                    .frame(width: overlay.width * distanceBetweenXSeats,
+//                           height: overlay.height * distanceBetweenYSeats)
+//                    .position(x: overlay.xAxis,
+//                              y: overlay.yAxis)
+//                    .opacity(0.01)
         }
     }
 
@@ -194,19 +194,17 @@ class CustomOverlay {
 //                                    width: data.width,
 //                                    height: data.height)
 //    }
-    func getCustomOverlayType(with tenantId: Int) -> TenantType {
-        var type: TenantType = .office
-        switch tenantId {
-        case 1:
+    func getCustomOverlayType(with tenantType: String) -> TenantType {
+        switch tenantType {
+        case "Store":
             return .store
-        case 2:
+        case "Restaurant":
             return .restaurant
-        case 3:
+        case "Office":
             return .office
         default:
             return .office
         }
-        return type
     }
 
     func getSeatOffsetByOfficeId(officeId: Int) -> SeatOverlayOffset {

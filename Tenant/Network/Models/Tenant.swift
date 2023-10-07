@@ -10,7 +10,7 @@ import Foundation
 struct Tenant: Codable, Hashable {
     let id: Int
     let createdAt, name: String
-    let type: Int
+    let type: String
     let x, y, width, height: Float
 
     enum CodingKeys: String, CodingKey {

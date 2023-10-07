@@ -17,6 +17,7 @@ struct ImageModifier: ViewModifier {
     var max: CGFloat = 2.0
     @Binding var currentScale: CGFloat
     @Binding var tenantArr: [Tenant]?
+    var didTap: ((_ data: Tenant) -> Void)?
 
     private func doubleTapGesture() {
         if currentScale <= min { currentScale = max } else
@@ -34,19 +35,19 @@ struct ImageModifier: ViewModifier {
                 .modifier(PinchToZoom(minScale: min,
                                       maxScale: max,
                                       scale: $currentScale))
-                .overlay(ForEach(Array((tenantArr ?? []).enumerated()), id: \.element) { index, seat in
+                .overlay(ForEach(Array((tenantArr ?? []).enumerated()), id: \.element) { index, tenant in
                     let customOverlay = CustomOverlay()
                     let overlayDetails = customOverlay.getSeatOverlayDetailsWithImageSize(
-                        data: seat,
+                        data: tenant,
                         size: imageSize)
 
-                    let overlayType = customOverlay.getCustomOverlayType(with: seat.id)
+                    let overlayType = customOverlay.getCustomOverlayType(with: tenant.type)
                     customOverlay.setCustomOverlayWithImageSize(with: overlayDetails,
                                                                 overlayType: overlayType,
                                                                 currentScale: currentScale,
                                                                 officeId: 0)
                     .highPriorityGesture(TapGesture().onEnded {
-//                        didTap?(index, seat)
+                        didTap?(tenant)
                     })
                 })
         }
