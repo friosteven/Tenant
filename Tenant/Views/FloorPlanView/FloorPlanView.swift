@@ -38,8 +38,7 @@ struct FloorPlanView: View {
             }
         }
         .onAppear(perform: {
-            viewModel.getImageURL()
-            viewModel.getTenant()
+            loadData()
         })
         .onChange(of: tenant, perform: { _ in
         })
@@ -53,11 +52,24 @@ struct FloorPlanView: View {
         .sheet(isPresented: $isBottomSheetOpen, content: {
             Text(tenant?.name ?? "").presentationDetents([.fraction(0.2)])
         })
+        .toolbar {
+            // TODO: - ADD CACHING WITH COREDATA
+            ToolbarItem(placement: .navigationBarTrailing, content: {
+                Button("Refresh", action: {
+                    loadData()
+                })
+            })
+        }
         
     }
 }
 
 extension FloorPlanView {
+    func loadData() {
+
+        viewModel.getImageURL()
+        viewModel.getTenant()
+    }
     func loadSVG(resource: Resource) {
         guard let url = URL(string: resource.imageURL) else { return }
         let size = CGSize(width: CGFloat(resource.imageWidth),
