@@ -11,6 +11,8 @@ struct TenantCompanion: View {
 
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        // TODO: - input data from figma (x,y, width, height), automatically calculate corresponding supabase values then insert to Tenants.table on supabase
+        
     }
 }
 
