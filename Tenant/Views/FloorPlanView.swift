@@ -50,11 +50,12 @@ extension FloorPlanView {
         let size = CGSize(width: CGFloat(resource.imageWidth),
                           height: CGFloat(resource.imageHeight))
 
-        renderSVGImage(url: url,
-                       size: size,
-                       image: { image in
-            self.image = image
-        })
+//        renderSVGImage(url: url,
+//                       size: size,
+//                       image: { image in
+//            self.image = image
+//        })
+        self.image = Asset.ImageAssets.floorplan.image
     }
 }
 
