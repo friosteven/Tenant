@@ -28,19 +28,20 @@ struct ImageModifier: ViewModifier {
     func body(content: Content) -> some View {
 
         ScrollView([.horizontal, .vertical], showsIndicators: false) {
-            content
-                .frame(width: imageSize.width * currentScale,
-                       height: imageSize.height * currentScale,
-                       alignment: .center)
-                .modifier(PinchToZoom(minScale: min,
-                                      maxScale: max,
-                                      scale: $currentScale))
-                .overlay(ForEach(Array((tenantArr ?? []).enumerated()), id: \.element) { index, tenant in
+            ZStack {
+                content
+                    .frame(width: imageSize.width * currentScale,
+                           height: imageSize.height * currentScale,
+                           alignment: .center)
+                    .modifier(PinchToZoom(minScale: min,
+                                          maxScale: max,
+                                          scale: $currentScale))
+                ForEach(Array((tenantArr ?? []).enumerated()), id: \.element) { index, tenant in
                     let customOverlay = CustomOverlay()
                     let overlayDetails = customOverlay.getSeatOverlayDetailsWithImageSize(
                         data: tenant,
                         size: imageSize)
-
+                    
                     let overlayType = customOverlay.getCustomOverlayType(with: tenant.type)
                     customOverlay.setCustomOverlayWithImageSize(with: overlayDetails,
                                                                 overlayType: overlayType,
@@ -49,7 +50,8 @@ struct ImageModifier: ViewModifier {
                     .highPriorityGesture(TapGesture().onEnded {
                         didTap?(tenant)
                     })
-                })
+                }
+            }
         }
     }
 }

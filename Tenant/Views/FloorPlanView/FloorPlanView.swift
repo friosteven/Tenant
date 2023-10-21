@@ -14,7 +14,8 @@ import Kingfisher
 /// https://stackoverflow.com/questions/27723912/swift-get-request-with-parameters
 
 struct FloorPlanView: View {
-    @ObservedObject var viewModel = FloorPlanViewModel()
+    @EnvironmentObject var appStateContainer: AppStateContainer
+    @StateObject var viewModel = FloorPlanViewModel()
     @State private var image = UIImage()
     @State private var currentScale: CGFloat = 1
     @State private var floorPlanSize: CGSize = CGSize(width: 0, height: 0)
@@ -22,19 +23,24 @@ struct FloorPlanView: View {
     @State private var tenant: Tenant?
 
     var body: some View {
-        VStack {
-            if let resources = viewModel.resourceArr.first {
-                BaseImage(image: image)
-                    .frame(width: CGFloat(resources.imageWidth),
-                           height: CGFloat(resources.imageHeight))
-                    .modifier(ImageModifier(imageSize: floorPlanSize,
-                                            currentScale: $currentScale,
-                                            tenantArr: $viewModel.tenantArr,
-                                           didTap: { tenant in
-                        self.tenant = tenant
+        ZStack {
+            if image == UIImage() && viewModel.resourceArr.isEmpty  {
+                ProgressView("")
+            }
+            VStack {
+                if let resources = viewModel.resourceArr.first {
+                    BaseImage(image: image)
+                        .frame(width: CGFloat(resources.imageWidth),
+                               height: CGFloat(resources.imageHeight))
+                        .modifier(ImageModifier(imageSize: floorPlanSize,
+                                                currentScale: $currentScale,
+                                                tenantArr: $viewModel.tenantArr,
+                                                didTap: { tenant in
+                            self.tenant = tenant
 
-                        isBottomSheetOpen = true
-                    }))
+                            isBottomSheetOpen = true
+                        }))
+                }
             }
         }
         .onAppear(perform: {
@@ -49,8 +55,15 @@ struct FloorPlanView: View {
                 loadSVG(resource: resource)
             }
         }
-        .sheet(isPresented: $isBottomSheetOpen, content: {
-            Text(tenant?.name ?? "").presentationDetents([.fraction(0.2)])
+        .alert(isPresented: $isBottomSheetOpen, content: {
+            Alert(title: Text(""),
+                  message: Text(tenant?.name.capitalized ?? ""),
+                  dismissButton: Alert.Button.cancel(
+                    Text("Ok"),
+                    action: {
+
+                    })
+            )
         })
         .toolbar {
             // TODO: - ADD CACHING WITH COREDATA
