@@ -6,10 +6,10 @@
 //
 
 import Foundation
-struct AddTenantRequest {
-    let name: String
-    let type: String
-    let x, y, width, height: Float
+struct AddTenantRequest: Encodable {
+    let name_input: String
+    let type_input: String
+    let x_input, y_input, width_input, height_input: Float
 }
 
 struct AddTenantResponse: Codable {

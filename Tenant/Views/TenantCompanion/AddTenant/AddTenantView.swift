@@ -43,12 +43,12 @@ struct AddTenantView: View {
                             isDisabled: .constant(false))
 
             Button("Submit", action: {
-                let request = AddTenantRequest(name: nameField,
-                                               type: typeField,
-                                               x: Float(xField) ?? 0.0,
-                                               y: Float(yField) ?? 0.0,
-                                               width: Float(widthField) ?? 0.0,
-                                               height: Float(heightField) ?? 0.0)
+                let request = AddTenantRequest(name_input: nameField,
+                                               type_input: typeField,
+                                               x_input: Float(xField) ?? 0.0,
+                                               y_input: Float(yField) ?? 0.0,
+                                               width_input: Float(widthField) ?? 0.0,
+                                               height_input: Float(heightField) ?? 0.0)
                 
                 viewModel.addTenant(request: request)
             })

@@ -62,14 +62,7 @@ extension TenantEndpoint: Endpoint {
     var body: [String : Any]? {
         switch self {
         case .addTenant(let request):
-            return [
-                "name_input": request.name,
-                "type_input": request.type,
-                "x_input": request.x,
-                "y_input":  request.y,
-                "width_input": request.width,
-                "height_input":  request.height,
-            ]
+            return request.asDictionary
         default:
             return nil
         }
