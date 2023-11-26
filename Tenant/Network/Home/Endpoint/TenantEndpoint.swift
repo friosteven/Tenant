@@ -7,14 +7,15 @@
 
 import Foundation
 
-enum HomeEndpoint {
+enum TenantEndpoint {
     case getResources
     case getImageURL
     case getTenant
+
+    case addTenant(request: AddTenantRequest)
 }
 
-extension HomeEndpoint: Endpoint {
-
+extension TenantEndpoint: Endpoint {
 
     var scheme: String {
         switch self {
@@ -37,11 +38,15 @@ extension HomeEndpoint: Endpoint {
             return "/rest/v1/Resources"
         case .getTenant:
             return "/rest/v1/Tenants"
+        case .addTenant:
+            return "/rest/v1/rpc/add_tenant"
         }
     }
 
     var method: RequestMethod {
         switch self {
+        case .addTenant:
+            return .post
         default:
             return .get
         }
@@ -54,8 +59,17 @@ extension HomeEndpoint: Endpoint {
         }
     }
 
-    var body: [String : String]? {
+    var body: [String : Any]? {
         switch self {
+        case .addTenant(let request):
+            return [
+                "name_input": request.name,
+                "type_input": request.type,
+                "x_input": request.x,
+                "y_input":  request.y,
+                "width_input": request.width,
+                "height_input":  request.height,
+            ]
         default:
             return nil
         }

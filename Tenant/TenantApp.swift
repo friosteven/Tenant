@@ -10,9 +10,12 @@ import SwiftUI
 @main
 struct TenantApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
+    @StateObject var tabViewState = TabViewState()
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            CustomTab()
+                .environmentObject(tabViewState)
         }
     }
 }

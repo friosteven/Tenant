@@ -10,20 +10,19 @@ import Foundation
 @MainActor
 class FloorPlanViewModel: ObservableObject {
 
-    @Published var service = HomeService()
+    @Published var service = TenantService()
     @Published var resourceArr: [Resource] = []
-    @Published var tenantArr: [Tenant]? = []
+    @Published var tenantArr: [TenantResponse]? = []
 
     func getImageURL() {
 
         Task {
             do {
                 let result = await service.sendRequest(
-                    endpoint: HomeEndpoint.getImageURL,
+                    endpoint: TenantEndpoint.getImageURL,
                     responseModel: [Resource].self
                 )
                 self.resourceArr = try result.get()
-                print("val-resourceArr: \(self.resourceArr)")
             }
         }
     }
@@ -32,11 +31,10 @@ class FloorPlanViewModel: ObservableObject {
         Task {
             do {
                 let result = await service.sendRequest(
-                    endpoint: HomeEndpoint.getTenant,
-                    responseModel: [Tenant].self
+                    endpoint: TenantEndpoint.getTenant,
+                    responseModel: [TenantResponse].self
                 )
                 self.tenantArr = try result.get()
-                print("val-tenantArr: \(self.tenantArr)")
             }
         }
     }

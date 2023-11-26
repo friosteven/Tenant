@@ -39,6 +39,9 @@ class CustomOverlay {
 //        let distanceBetweenXSeats = getSeatOffsetByOfficeId(officeId: officeId).horizontal
 //        let distanceBetweenYSeats = getSeatOffsetByOfficeId(officeId: officeId).vertical
 
+
+        print("overlay details: x: \(overlay.xAxis), y: \(overlay.yAxis), width: \(overlay.width), height: \(overlay.height), rawX:\(overlayDetails.xAxis), rawY:\(overlayDetails.yAxis), rawWidth:\(overlayDetails.width), rawHeight:\(overlayDetails.height)")
+
         return ZStack {
             Rectangle()
                 .fill(overlayType.fill)
@@ -126,15 +129,24 @@ class CustomOverlay {
     ///   - rawXorY: x or y value from supabase
     ///   - currentScale: scale level of zoomed image
     /// - Returns: dimension of overlay e.g. height or width
+//    func getCustomOverlayDimension(imageWidthOrHeight: CGFloat,
+//                                   rawWidthOrHeight: Float,
+//                                   rawXorY: Float,
+//                                   currentScale: CGFloat?) -> CGFloat {
+//
+//        let imageDimension = imageWidthOrHeight * (currentScale ?? 1.0)
+//        let overlayDimension = (CGFloat(rawWidthOrHeight) * imageDimension)
+//
+//        return overlayDimension
+//    }
+
+    /// Using values from figma directly to supabase
     func getCustomOverlayDimension(imageWidthOrHeight: CGFloat,
                                    rawWidthOrHeight: Float,
                                    rawXorY: Float,
                                    currentScale: CGFloat?) -> CGFloat {
 
-        let imageDimension = imageWidthOrHeight * (currentScale ?? 1.0)
-        let overlayDimension = (CGFloat(rawWidthOrHeight) * imageDimension)
-
-        return overlayDimension
+        return CGFloat(rawWidthOrHeight) * (currentScale ?? 1.0)
     }
 
     /// To get overlay X-axis, ONLY pass horizontal values e.g. (X-Axis and Width).
@@ -146,27 +158,38 @@ class CustomOverlay {
     ///   - rawXorY: x or y value from supabase
     ///   - currentScale: scale level of zoomed image
     /// - Returns: X-Axis or Y-Axis coordinate of overlay
+//    func getCustomOverlayPosition(imageWidthOrHeight: CGFloat,
+//                                  rawWidthOrHeight: Float,
+//                                  rawXorY: Float,
+//                                  currentScale: CGFloat?) -> CGFloat {
+//
+//        let imageDimension = imageWidthOrHeight * (currentScale ?? 1.0)
+//        let overlayDimension = (CGFloat(rawWidthOrHeight) * imageDimension)
+//
+//        let position = (CGFloat(rawXorY) * imageDimension)
+//
+//        return position + (overlayDimension / 2)
+//    }
+
+    /// Using values from figma directly to supabase
     func getCustomOverlayPosition(imageWidthOrHeight: CGFloat,
                                   rawWidthOrHeight: Float,
                                   rawXorY: Float,
                                   currentScale: CGFloat?) -> CGFloat {
 
-        let imageDimension = imageWidthOrHeight * (currentScale ?? 1.0)
-        let overlayDimension = (CGFloat(rawWidthOrHeight) * imageDimension)
+        let position = CGFloat(rawXorY) + (CGFloat(rawWidthOrHeight) / 2)
 
-        let position = (CGFloat(rawXorY) * imageDimension)
-
-        return position + (overlayDimension / 2)
+        return position * (currentScale ?? 1.0)
     }
 
-    func getSeatOverlayDetails(data: Tenant, image: UIImage) -> CustomOverlayDetails {
+    func getSeatOverlayDetails(data: TenantResponse, image: UIImage) -> CustomOverlayDetails {
         return CustomOverlayDetails(image: image,
                                     xAxis: data.x,
                                     yAxis: data.y,
                                     width: data.width,
                                     height: data.height)
     }
-    func getSeatOverlayDetailsWithImageSize(data: Tenant, size: CGSize) -> CustomOverlayDetailsWithImageSize {
+    func getSeatOverlayDetailsWithImageSize(data: TenantResponse, size: CGSize) -> CustomOverlayDetailsWithImageSize {
         return CustomOverlayDetailsWithImageSize(size: size,
                                                  xAxis: data.x,
                                                  yAxis: data.y,

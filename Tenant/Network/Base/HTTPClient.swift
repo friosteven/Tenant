@@ -62,6 +62,7 @@ extension HTTPClient {
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = endpoint.method.rawValue
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.allHTTPHeaderFields = endpoint.header
         return urlRequest
     }

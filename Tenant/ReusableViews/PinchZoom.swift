@@ -16,8 +16,8 @@ struct ImageModifier: ViewModifier {
     var min: CGFloat = 0.3
     var max: CGFloat = 2.0
     @Binding var currentScale: CGFloat
-    @Binding var tenantArr: [Tenant]?
-    var didTap: ((_ data: Tenant) -> Void)?
+    @Binding var tenantArr: [TenantResponse]?
+    var didTap: ((_ data: TenantResponse) -> Void)?
 
     private func doubleTapGesture() {
         if currentScale <= min { currentScale = max } else

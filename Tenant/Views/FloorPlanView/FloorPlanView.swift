@@ -20,7 +20,7 @@ struct FloorPlanView: View {
     @State private var currentScale: CGFloat = 1
     @State private var floorPlanSize: CGSize = CGSize(width: 0, height: 0)
     @State private var isBottomSheetOpen: Bool = false
-    @State private var tenant: Tenant?
+    @State private var tenant: TenantResponse?
 
     var body: some View {
         ZStack {
@@ -79,7 +79,6 @@ struct FloorPlanView: View {
 
 extension FloorPlanView {
     func loadData() {
-
         viewModel.getImageURL()
         viewModel.getTenant()
     }

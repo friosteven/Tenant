@@ -1,5 +1,5 @@
 //
-//  Tenant.swift
+//  TenantResponse.swift
 //  Tenant
 //
 //  Created by Steven Frio on 7/26/23.
@@ -7,7 +7,7 @@
 import Foundation
 
 // MARK: - Tenant
-struct Tenant: Codable, Hashable {
+struct TenantResponse: Codable, Hashable {
     let id: Int
     let createdAt, name: String
     let type: String
@@ -20,5 +20,5 @@ struct Tenant: Codable, Hashable {
     }
 }
 
-typealias Tenants = [Tenant]
+typealias Tenants = [TenantResponse]
 

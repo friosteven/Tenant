@@ -11,6 +11,7 @@ struct HomeView: View {
     @State private var goToTenantMap = false
     @State private var goToTenantCompanion = false
     @State private var homeNavigationEnum: HomeNavigationEnum = .tenantMap
+    @EnvironmentObject var appStateContainer: AppStateContainer
     
     var body: some View {
         NavigationView(content: {
