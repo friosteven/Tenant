@@ -18,42 +18,49 @@ struct AddTenantView: View {
     @EnvironmentObject var viewModel: TenantCompanionViewModel
 
     var body: some View {
-        VStack(spacing: 24) {
-            HStack {
-                CustomTextField(customTextFieldType: .xField,
-                                textFieldValue: $xField,
-                                isDisabled: .constant(false))
-                CustomTextField(customTextFieldType: .yField,
-                                textFieldValue: $yField,
-                                isDisabled: .constant(false))
+        VStack {
+            VStack {
+                ProgressView()
+                    .tint(.pink)
             }
-            HStack {
-                CustomTextField(customTextFieldType: .widthField,
-                                textFieldValue: $widthField,
+            .progressViewStyle(.linear)
+            VStack(spacing: 24) {
+                HStack {
+                    CustomTextFieldV2(customTextFieldType: .xField,
+                                    textFieldValue: $xField,
+                                    isDisabled: .constant(false))
+                    CustomTextFieldV2(customTextFieldType: .yField,
+                                    textFieldValue: $yField,
+                                    isDisabled: .constant(false))
+                }
+                HStack {
+                    CustomTextFieldV2(customTextFieldType: .widthField,
+                                    textFieldValue: $widthField,
+                                    isDisabled: .constant(false))
+                    CustomTextFieldV2(customTextFieldType: .heightField,
+                                    textFieldValue: $heightField,
+                                    isDisabled: .constant(false))
+                }
+                CustomTextFieldV2(customTextFieldType: .typeField,
+                                textFieldValue: $typeField,
                                 isDisabled: .constant(false))
-                CustomTextField(customTextFieldType: .heightField,
-                                textFieldValue: $heightField,
+                CustomTextFieldV2(customTextFieldType: .nameField,
+                                textFieldValue: $nameField,
                                 isDisabled: .constant(false))
-            }
-            CustomTextField(customTextFieldType: .typeField,
-                            textFieldValue: $typeField,
-                            isDisabled: .constant(false))
-            CustomTextField(customTextFieldType: .nameField,
-                            textFieldValue: $nameField,
-                            isDisabled: .constant(false))
 
-            Button("Submit", action: {
-                let request = AddTenantRequest(name_input: nameField,
-                                               type_input: typeField,
-                                               x_input: Float(xField) ?? 0.0,
-                                               y_input: Float(yField) ?? 0.0,
-                                               width_input: Float(widthField) ?? 0.0,
-                                               height_input: Float(heightField) ?? 0.0)
-                
-                viewModel.addTenant(request: request)
-            })
+                Button("Submit", action: {
+                    let request = AddTenantRequest(name_input: nameField,
+                                                   type_input: typeField,
+                                                   x_input: Float(xField) ?? 0.0,
+                                                   y_input: Float(yField) ?? 0.0,
+                                                   width_input: Float(widthField) ?? 0.0,
+                                                   height_input: Float(heightField) ?? 0.0)
+
+                    viewModel.addTenant(request: request)
+                })
+            }
+            .padding(24)
         }
-        .padding(24)
         .environmentObject(viewModel)
     }
 }

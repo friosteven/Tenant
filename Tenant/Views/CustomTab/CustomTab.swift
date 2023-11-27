@@ -13,7 +13,7 @@ struct CustomTab: View {
         TabView(selection: $tabViewState.selectedTab) {
             FloorPlanView()
                 .tabItem({
-                    Label("Tenant", systemImage: "house.fill")
+                    Label("Home", systemImage: "house.fill")
                 })
                 .tag(Tab.home)
             TenantCompanion()

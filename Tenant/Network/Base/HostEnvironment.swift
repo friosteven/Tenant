@@ -11,6 +11,7 @@ import Foundation
 enum HostEnvironment {
     case supabase(env: Environment)
     case firebase(env: Environment)
+    case fakeStore(env: Environment)
 
     enum Environment {
         case dev
@@ -37,6 +38,15 @@ enum HostEnvironment {
                 return "firebaseHostStaging"
             case .prod:
                 return "firebaseHostProd"
+            }
+        case.fakeStore(let env):
+            switch env {
+            case .dev:
+                return "fakestoreapi.com"
+            case .staging:
+                return ""
+            case .prod:
+                return ""
             }
         }
     }

@@ -13,7 +13,6 @@ class TenantCompanionViewModel: ObservableObject {
     @Published private var service = TenantService()
     @Published var addTenantMessage = ""
     @Published var showAlert = false
-    
 
     func addTenant(request: AddTenantRequest) {
         Task {

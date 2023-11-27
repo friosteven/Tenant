@@ -23,10 +23,10 @@ struct TenantCompanion: View {
         VStack {
             VStack(spacing: 16) {
                 HStack(spacing: 8) {
-                    CustomTextField(customTextFieldType: .imageWidth,
+                    CustomTextFieldV2(customTextFieldType: .imageWidth,
                                     textFieldValue: $imageWidth,
                                     isDisabled: .constant(true))
-                    CustomTextField(customTextFieldType: .imageHeight,
+                    CustomTextFieldV2(customTextFieldType: .imageHeight,
                                     textFieldValue: $imageHeight,
                                     isDisabled: .constant(true))
                 }

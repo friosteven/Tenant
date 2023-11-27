@@ -15,6 +15,12 @@ internal enum L10n {
   /// 
   ///   Created by Steven Frio on 7/2/23.
   internal static let test = L10n.tr("Localizable", "test", fallback: "asoida")
+  internal enum Placeholder {
+    /// Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    internal static let details = L10n.tr("Localizable", "placeholder.details", fallback: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
+    /// Lorem ipsum dolor sit amet
+    internal static let title = L10n.tr("Localizable", "placeholder.title", fallback: "Lorem ipsum dolor sit amet")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

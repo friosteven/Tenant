@@ -22,10 +22,10 @@ struct EditableAlert: View {
     var body: some View {
         VStack(spacing: 16) {
             HStack(spacing: 8) {
-                CustomTextField(customTextFieldType: .imageWidth,
+                CustomTextFieldV2(customTextFieldType: .imageWidth,
                                 textFieldValue: $tfImageWidth,
                                 isDisabled: .constant(false))
-                CustomTextField(customTextFieldType: .imageHeight,
+                CustomTextFieldV2(customTextFieldType: .imageHeight,
                                 textFieldValue: $tfImageHeight,
                                 isDisabled: .constant(false))
             }

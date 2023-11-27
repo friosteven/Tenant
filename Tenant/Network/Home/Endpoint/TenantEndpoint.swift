@@ -11,8 +11,12 @@ enum TenantEndpoint {
     case getResources
     case getImageURL
     case getTenant
-
     case addTenant(request: AddTenantRequest)
+
+    //TODO: REFACTOR FAKESTORE/TENANT RELATED ENUMS
+    case getFakeStoreProducts
+    case getFakeStoreProductsWithLimit(requestBody: ProductsInputModel)
+    case getFakeStoreCategories
 }
 
 extension TenantEndpoint: Endpoint {
@@ -25,6 +29,12 @@ extension TenantEndpoint: Endpoint {
     }
     var host: String {
         switch self {
+        case .getFakeStoreProducts:
+            return HostEnvironment.fakeStore(env: .dev).getHostURL()
+        case .getFakeStoreProductsWithLimit:
+            return HostEnvironment.fakeStore(env: .dev).getHostURL()
+        case .getFakeStoreCategories:
+            return HostEnvironment.fakeStore(env: .dev).getHostURL()
         default:
             return HostEnvironment.supabase(env: .dev).getHostURL()
         }
@@ -40,6 +50,12 @@ extension TenantEndpoint: Endpoint {
             return "/rest/v1/Tenants"
         case .addTenant:
             return "/rest/v1/rpc/add_tenant"
+        case .getFakeStoreProducts:
+            return "products"
+        case .getFakeStoreCategories:
+            return "products/categories"
+        case .getFakeStoreProductsWithLimit:
+            return "products"
         }
     }
 

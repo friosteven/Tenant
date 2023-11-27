@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum CustomTextFieldType {
+enum CustomTextFieldTypeV2 {
     case xField
     case yField
     case widthField

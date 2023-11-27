@@ -21,59 +21,68 @@ struct FloorPlanView: View {
     @State private var floorPlanSize: CGSize = CGSize(width: 0, height: 0)
     @State private var isBottomSheetOpen: Bool = false
     @State private var tenant: TenantResponse?
+    @State private var isStoreHomeViewActive = false
 
     var body: some View {
-        ZStack {
-            if image == UIImage() && viewModel.resourceArr.isEmpty  {
-                ProgressView("")
-            }
-            VStack {
-                if let resources = viewModel.resourceArr.first {
-                    BaseImage(image: image)
-                        .frame(width: CGFloat(resources.imageWidth),
-                               height: CGFloat(resources.imageHeight))
-                        .modifier(ImageModifier(imageSize: floorPlanSize,
-                                                currentScale: $currentScale,
-                                                tenantArr: $viewModel.tenantArr,
-                                                didTap: { tenant in
-                            self.tenant = tenant
+        NavigationView(content: {
+            ZStack {
+                NavigationLink(destination: StoreHomeView().navigationTitle(tenant?.name ?? ""),
+                               isActive: $isStoreHomeViewActive) {
+                    EmptyView()
+                }
+                if image == UIImage() && viewModel.resourceArr.isEmpty  {
+                    ProgressView("")
+                }
+                VStack {
+                    if let resources = viewModel.resourceArr.first {
+                        BaseImage(image: image)
+                            .frame(width: CGFloat(resources.imageWidth),
+                                   height: CGFloat(resources.imageHeight))
+                            .modifier(ImageModifier(imageSize: floorPlanSize,
+                                                    currentScale: $currentScale,
+                                                    tenantArr: $viewModel.tenantArr,
+                                                    didTap: { tenant in
+                                self.tenant = tenant
 
-                            isBottomSheetOpen = true
-                        }))
+                                isBottomSheetOpen = true
+                            }))
+                    }
                 }
             }
-        }
-        .onAppear(perform: {
-            loadData()
-        })
-        .onChange(of: tenant, perform: { _ in
-        })
-        .onChange(of: viewModel.resourceArr.first) { resource in
-            if let resource = resource {
-                floorPlanSize = CGSize(width: CGFloat(resource.imageWidth),
-                                       height: CGFloat(resource.imageHeight))
-                loadSVG(resource: resource)
-            }
-        }
-        .alert(isPresented: $isBottomSheetOpen, content: {
-            Alert(title: Text(""),
-                  message: Text(tenant?.name.capitalized ?? ""),
-                  dismissButton: Alert.Button.cancel(
-                    Text("Ok"),
-                    action: {
-
-                    })
-            )
-        })
-        .toolbar {
-            // TODO: - ADD CACHING WITH COREDATA
-            ToolbarItem(placement: .navigationBarTrailing, content: {
-                Button("Refresh", action: {
-                    loadData()
-                })
+            .onAppear(perform: {
+                loadData()
             })
-        }
-        
+            .onChange(of: tenant, perform: { _ in
+            })
+            .onChange(of: viewModel.resourceArr.first) { resource in
+                if let resource = resource {
+                    floorPlanSize = CGSize(width: CGFloat(resource.imageWidth),
+                                           height: CGFloat(resource.imageHeight))
+                    loadSVG(resource: resource)
+                }
+            }
+            .alert(isPresented: $isBottomSheetOpen, content: {
+                Alert(title: Text(""),
+                      message: Text(tenant?.name.capitalized ?? ""),
+                      primaryButton: Alert.Button.default(
+                        Text("Shop Now"),
+                        action: {
+                            isStoreHomeViewActive.toggle()
+                }),
+                      secondaryButton: Alert.Button.cancel(
+                        Text("Dismiss"),
+                        action: {
+                }))
+            })
+            .toolbar {
+                // TODO: - ADD CACHING WITH COREDATA
+                ToolbarItem(placement: .navigationBarTrailing, content: {
+                    Button("Refresh", action: {
+                        loadData()
+                    })
+                })
+            }
+        })
     }
 }
 
