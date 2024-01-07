@@ -11,7 +11,7 @@ import SwiftUI
 struct TenantApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    @StateObject private var manager: CartCDManager = CartCDManager()
+    @StateObject private var manager: CoreDataManager = CoreDataManager()
 
     @StateObject var tabViewState = TabViewState()
     var body: some Scene {

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct CartView: View {
 
     @StateObject var cartDMVM = CartCDManagerViewModel()
@@ -32,13 +31,13 @@ struct CartView_Previews: PreviewProvider {
 }
 
 extension CartView {
-    func modelHelper(using cartModel: CartItemDataModel) -> ProductsOutputModelElement {
-        return ProductsOutputModelElement(id: Int(cartModel.productID),
-                                   title: cartModel.productName,
-                                   price: cartModel.unitPrice,
+    func modelHelper(using data: CartModel) -> ProductsOutputModelElement {
+        return ProductsOutputModelElement(id: Int(data.productID),
+                                   title: data.productName,
+                                   price: data.unitPrice,
                                    productDescription: "",
                                    category: "",
-                                   image: cartModel.imageURL,
+                                   image: data.imageURL,
                                    rating: Rating(rate: 0, count: 0))
     }
 }

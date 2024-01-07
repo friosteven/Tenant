@@ -1,5 +1,5 @@
 //
-//  CartCoreDataManager.swift
+//  CoreDataManager.swift
 //  Tenant
 //
 //  Created by Steven Frio on 12/3/23.
@@ -8,13 +8,22 @@
 import Foundation
 import CoreData
 
-class CartCDManager: ObservableObject {
+class CoreDataManager: ObservableObject {
 
     let persistentContainer: NSPersistentContainer
-    static let shared = CartCDManager()
+    static let shared = CoreDataManager()
 
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
+    }
+
+    init() {
+        persistentContainer = NSPersistentContainer(name: "TenantCoreDataModel")
+        persistentContainer.loadPersistentStores { description, error in
+            if let error = error {
+                fatalError("Unable to initialize core data stack \(error)")
+            }
+        }
     }
 
     func saveData() {
@@ -44,17 +53,4 @@ class CartCDManager: ObservableObject {
             return 0
         }
     }
-
-    init() {
-        persistentContainer = NSPersistentContainer(name: "TenantCoreDataModel")
-        persistentContainer.loadPersistentStores { description, error in
-            if let error = error {
-                fatalError("Unable to initialize core data stack \(error)")
-            }
-        }
-    }
-}
-
-struct CartCDModel {
-    
 }

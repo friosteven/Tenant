@@ -1,13 +1,15 @@
 //
-//  CartItemDomainModel.swift
+//  CartModel.swift
 //  Tenant
 //
 //  Created by Steven Frio on 1/7/24.
 //
 
 import Foundation
+import CoreData
 
-struct CartItemDomainModel {
+struct CartModel: Identifiable {
+    var id: UUID
     var productID: Int
     var productName: String
     var unitPrice: Float

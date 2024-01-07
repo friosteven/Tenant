@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension CartEntity {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CartEntity> {

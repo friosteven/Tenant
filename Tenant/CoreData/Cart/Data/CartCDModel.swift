@@ -1,5 +1,5 @@
 //
-//  CartItemDataModel.swift
+//  CartCDModel.swift
 //  Tenant
 //
 //  Created by Steven Frio on 1/7/24.
@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-struct CartItemDataModel {
+struct CartCDModel {
     let cartEntity: CartEntity
 
     var id: NSManagedObjectID {

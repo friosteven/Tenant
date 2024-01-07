@@ -16,8 +16,6 @@ struct ProductDetailsView: View {
 
     @StateObject private var cartCDM = CartCDManagerViewModel()
 
-
-
     @State private var quantity: String = "0"
     var body: some View {
         VStack {
@@ -94,7 +92,8 @@ struct ProductDetails_Previews: PreviewProvider {
 
 extension ProductDetailsView {
     func addToCart() {
-        let cart = CartItemDomainModel(
+        let cart = CartModel(
+            id: UUID(),
             productID: productDetails?.id ?? 0,
             productName: productDetails?.title ?? "",
             unitPrice: productDetails?.price ?? 0,

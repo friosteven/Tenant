@@ -11,14 +11,24 @@ import CoreData
 @MainActor
 class CartCDManagerViewModel: ObservableObject {
 
-    @Published var cartItems: [CartItemDataModel] = []
+    @Published var cartItems: [CartModel] = []
 
     func readItems() {
-        cartItems = CartCDManager.shared.readAllData().map(CartItemDataModel.init)
+        let data = CoreDataManager.shared.readAllData().map(CartCDModel.init)
+
+        cartItems = data.map { value in
+            CartModel(id: UUID(),
+                      productID: value.productID,
+                      productName: value.productName,
+                      unitPrice: value.unitPrice,
+                      storeID: value.storeID,
+                      quantity: value.quantity,
+                      imageURL: value.imageURL)
+        }
     }
 
-    func saveItem(item: CartItemDomainModel) {
-        let cart = CartEntity(context: CartCDManager.shared.viewContext)
+    func saveItem(item: CartModel) {
+        let cart = CartEntity(context: CoreDataManager.shared.viewContext)
 
         cart.imageURL = item.imageURL
         cart.unitPrice = Float(item.unitPrice)
@@ -26,7 +36,8 @@ class CartCDManagerViewModel: ObservableObject {
         cart.storeID = Int16(item.storeID)
         cart.productName = item.productName
 
-        CartCDManager.shared.saveData()
+        CoreDataManager
+            .shared.saveData()
 
     }
 }
