@@ -16,6 +16,12 @@ struct CustomTab: View {
                     Label("Home", systemImage: "house.fill")
                 })
                 .tag(Tab.home)
+            CartView()
+                .tabItem({
+                    Label("Cart", systemImage: "cart.fill")
+                })
+                .tag(Tab.cart)
+
             TenantCompanion()
 //            SettingsView()
                 .tabItem({

@@ -15,7 +15,7 @@ struct ProductsOutputModelElement: Codable, Identifiable {
     let uuid = UUID()
     let id: Int?
     let title: String?
-    let price: Double?
+    let price: Float?
     let productDescription, category: String?
     let image: String?
     let rating: Rating
@@ -30,7 +30,7 @@ struct ProductsOutputModelElement: Codable, Identifiable {
 // MARK: - Rating
 
 struct Rating: Codable {
-    let rate: Double?
+    let rate: Float?
     let count: Int?
 }
 

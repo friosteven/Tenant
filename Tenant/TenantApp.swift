@@ -11,11 +11,14 @@ import SwiftUI
 struct TenantApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+    @StateObject private var manager: CartCDManager = CartCDManager()
+
     @StateObject var tabViewState = TabViewState()
     var body: some Scene {
         WindowGroup {
             CustomTab()
                 .environmentObject(tabViewState)
+                .environment(\.managedObjectContext, manager.viewContext)
         }
     }
 }

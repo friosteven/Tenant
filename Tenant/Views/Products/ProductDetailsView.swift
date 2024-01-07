@@ -10,9 +10,14 @@ import SwiftUI
 
 struct ProductDetailsView: View {
     var productDetails: ProductsOutputModelElement?
-    @EnvironmentObject var cartItems: Cart
+//    @EnvironmentObject var cartItems: Cart
     //    @State private var trailingDesc = ""
     //    @State private var lineLimit: Int? = nil
+
+    @StateObject private var cartCDM = CartCDManagerViewModel()
+
+
+
     @State private var quantity: String = "0"
     var body: some View {
         VStack {
@@ -67,10 +72,12 @@ struct ProductDetailsView: View {
             }
             .padding(.all, 16)
             Spacer()
-            CustomButton(customButtonType: .addToCart)
-                .onTapGesture {
+            CustomButton(customButtonType: .addToCart, didTap: {
+
                     addToCart()
-                }
+            })
+//                .onTapGesture {
+//                }
         }
 //        .environmentObject(cartItems)
         .onAppear(perform: {
@@ -81,23 +88,23 @@ struct ProductDetailsView: View {
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailsView().environmentObject(Cart())
+        ProductDetailsView()
     }
 }
 
 extension ProductDetailsView {
     func addToCart() {
-        let cart = CartModel()
-        cart.id = productDetails?.id ?? 0
-        cart.title = productDetails?.title ?? ""
-        cart.price = productDetails?.price ?? 0.0
-        cart.productDescription = productDetails?.productDescription ?? ""
-        cart.category = productDetails?.category ?? ""
-        cart.image = productDetails?.image ?? ""
-        cartItems.cart.append(cart)
-        //        cartItems.
-        //        cartItems.cart[cartItems.cart.count + 1].title = productDetails?.title?.description ?? ""
+        let cart = CartItemDomainModel(
+            productID: productDetails?.id ?? 0,
+            productName: productDetails?.title ?? "",
+            unitPrice: productDetails?.price ?? 0,
+            storeID: productDetails?.id ?? 0,
+            quantity: 1,
+            imageURL: "")
+
+        cartCDM.saveItem(item: cart)
         print("Added to Cart")
+//        cartCDM.readItems()
         //        print(value[0].productDescription)
     }
 

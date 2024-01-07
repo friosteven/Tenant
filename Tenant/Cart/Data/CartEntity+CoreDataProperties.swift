@@ -2,7 +2,7 @@
 //  CartEntity+CoreDataProperties.swift
 //  Tenant
 //
-//  Created by Steven Frio on 1/6/24.
+//  Created by Steven Frio on 1/7/24.
 //
 //
 
@@ -16,12 +16,12 @@ extension CartEntity {
         return NSFetchRequest<CartEntity>(entityName: "CartEntity")
     }
 
-    @NSManaged public var category: String?
-    @NSManaged public var id: Int16
-    @NSManaged public var image: URL?
-    @NSManaged public var price: Float
+    @NSManaged public var productID: Int16
+    @NSManaged public var imageURL: String?
+    @NSManaged public var unitPrice: Float
     @NSManaged public var quantity: Int16
-    @NSManaged public var storeId: Int16
+    @NSManaged public var storeID: Int16
+    @NSManaged public var productName: String?
 
 }
 

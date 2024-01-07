@@ -10,5 +10,6 @@ import SwiftUI
 
 enum Tab {
     case home
+    case cart
     case settings
 }
