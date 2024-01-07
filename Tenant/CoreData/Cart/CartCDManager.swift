@@ -1,5 +1,5 @@
 //
-//  CartCDManagerViewModel.swift
+//  CartCDManager.swift
 //  Tenant
 //
 //  Created by Steven Frio on 1/6/24.
@@ -8,15 +8,14 @@
 import Foundation
 import CoreData
 
-@MainActor
-class CartCDManagerViewModel: ObservableObject {
 
-    @Published var cartItems: [CartModel] = []
+//should only be used by viewmodels
+class CartCDManager: ObservableObject {
 
-    func readItems() {
+    func readItems() -> [CartModel] {
         let data = CoreDataManager.shared.readAllData().map(CartCDModel.init)
 
-        cartItems = data.map { value in
+        return data.map { value in
             CartModel(id: UUID(),
                       productID: value.productID,
                       productName: value.productName,

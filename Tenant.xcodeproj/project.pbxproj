@@ -121,7 +121,7 @@
 		B0E5CF702A52FD80005084BE /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = B0E5CF6F2A52FD80005084BE /* netfox */; };
 		B0E9B5292B494B220006F4F4 /* TenantCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0E9B5272B494B220006F4F4 /* TenantCoreDataModel.xcdatamodeld */; };
 		B0E9B5332B496D2F0006F4F4 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9B5322B496D2F0006F4F4 /* CartViewModel.swift */; };
-		B0E9B5352B499ED20006F4F4 /* CartCDManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9B5342B499ED20006F4F4 /* CartCDManagerViewModel.swift */; };
+		B0E9B5352B499ED20006F4F4 /* CartCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9B5342B499ED20006F4F4 /* CartCDManager.swift */; };
 		B0E9B5382B4A41940006F4F4 /* CartCDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9B5372B4A41940006F4F4 /* CartCDModel.swift */; };
 		B0E9B5432B4A525D0006F4F4 /* CartEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9B5412B4A525D0006F4F4 /* CartEntity+CoreDataClass.swift */; };
 		B0E9B5442B4A525D0006F4F4 /* CartEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E9B5422B4A525D0006F4F4 /* CartEntity+CoreDataProperties.swift */; };
@@ -200,7 +200,7 @@
 		B0E5CF6C2A52F86E005084BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0E9B5282B494B220006F4F4 /* TenantCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TenantCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B0E9B5322B496D2F0006F4F4 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
-		B0E9B5342B499ED20006F4F4 /* CartCDManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCDManagerViewModel.swift; sourceTree = "<group>"; };
+		B0E9B5342B499ED20006F4F4 /* CartCDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCDManager.swift; sourceTree = "<group>"; };
 		B0E9B5372B4A41940006F4F4 /* CartCDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCDModel.swift; sourceTree = "<group>"; };
 		B0E9B5412B4A525D0006F4F4 /* CartEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B0E9B5422B4A525D0006F4F4 /* CartEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CartEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -538,7 +538,6 @@
 			children = (
 				B0803ECF2B1480740001574E /* CartView.swift */,
 				B0E9B5322B496D2F0006F4F4 /* CartViewModel.swift */,
-				B0E9B5342B499ED20006F4F4 /* CartCDManagerViewModel.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -608,6 +607,7 @@
 		B0E9B5362B4A41860006F4F4 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				B0E9B5342B499ED20006F4F4 /* CartCDManager.swift */,
 				B0E9B5412B4A525D0006F4F4 /* CartEntity+CoreDataClass.swift */,
 				B0E9B5422B4A525D0006F4F4 /* CartEntity+CoreDataProperties.swift */,
 				B0E9B5462B4A54BE0006F4F4 /* Model */,
@@ -854,7 +854,7 @@
 				B03C37412A51437F00DEAE7C /* TenantApp.swift in Sources */,
 				B0745E142AEE811A0011D6B8 /* EditableAlert.swift in Sources */,
 				B0D665D72A70A12F00260985 /* TenantResponse.swift in Sources */,
-				B0E9B5352B499ED20006F4F4 /* CartCDManagerViewModel.swift in Sources */,
+				B0E9B5352B499ED20006F4F4 /* CartCDManager.swift in Sources */,
 				B0803ED82B1482EF0001574E /* CustomButton.swift in Sources */,
 				B0803EDE2B14866F0001574E /* FakeStoreService.swift in Sources */,
 				B01E04412AE55BA300032BAF /* AddTenant.swift in Sources */,

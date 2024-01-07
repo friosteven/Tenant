@@ -14,7 +14,8 @@ struct ProductDetailsView: View {
     //    @State private var trailingDesc = ""
     //    @State private var lineLimit: Int? = nil
 
-    @StateObject private var cartCDM = CartCDManagerViewModel()
+//    @StateObject private var cartCDM = CartCDManager()
+    @StateObject private var cartVM = CartViewModel()
 
     @State private var quantity: String = "0"
     var body: some View {
@@ -71,11 +72,10 @@ struct ProductDetailsView: View {
             .padding(.all, 16)
             Spacer()
             CustomButton(customButtonType: .addToCart, didTap: {
-
-                    addToCart()
+                if let productDetails = productDetails {
+                    cartVM.saveToCart(product: productDetails)
+                }
             })
-//                .onTapGesture {
-//                }
         }
 //        .environmentObject(cartItems)
         .onAppear(perform: {
@@ -91,21 +91,6 @@ struct ProductDetails_Previews: PreviewProvider {
 }
 
 extension ProductDetailsView {
-    func addToCart() {
-        let cart = CartModel(
-            id: UUID(),
-            productID: productDetails?.id ?? 0,
-            productName: productDetails?.title ?? "",
-            unitPrice: productDetails?.price ?? 0,
-            storeID: productDetails?.id ?? 0,
-            quantity: 1,
-            imageURL: "")
-
-        cartCDM.saveItem(item: cart)
-        print("Added to Cart")
-//        cartCDM.readItems()
-        //        print(value[0].productDescription)
-    }
 
     func readMoreReadLess() {
         //        let textCount = productDetails?.productDescription?.count ?? 0

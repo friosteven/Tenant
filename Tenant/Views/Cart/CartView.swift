@@ -9,17 +9,17 @@ import SwiftUI
 
 struct CartView: View {
 
-    @StateObject var cartDMVM = CartCDManagerViewModel()
+    @StateObject var cartVM = CartViewModel()
     
     var body: some View {
-
         VStack {
-            ForEach(cartDMVM.cartItems, id: \.id) { cartItem in
-                CustomCellView(product: modelHelper(using: cartItem), style: .favorites)
+            ForEach(cartVM.cartItems, id: \.id) { cartItem in
+                CustomCellView(product: cartVM.modelHelper(using: cartItem),
+                               style: .favorites)
             }
         }
         .onAppear(perform: {
-            cartDMVM.readItems()
+            cartVM.getCartItems()
         })
     }
 }
@@ -27,17 +27,5 @@ struct CartView: View {
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
-    }
-}
-
-extension CartView {
-    func modelHelper(using data: CartModel) -> ProductsOutputModelElement {
-        return ProductsOutputModelElement(id: Int(data.productID),
-                                   title: data.productName,
-                                   price: data.unitPrice,
-                                   productDescription: "",
-                                   category: "",
-                                   image: data.imageURL,
-                                   rating: Rating(rate: 0, count: 0))
     }
 }

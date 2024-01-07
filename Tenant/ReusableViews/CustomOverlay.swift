@@ -40,7 +40,7 @@ class CustomOverlay {
 //        let distanceBetweenYSeats = getSeatOffsetByOfficeId(officeId: officeId).vertical
 
 
-        print("overlay details: x: \(overlay.xAxis), y: \(overlay.yAxis), width: \(overlay.width), height: \(overlay.height), rawX:\(overlayDetails.xAxis), rawY:\(overlayDetails.yAxis), rawWidth:\(overlayDetails.width), rawHeight:\(overlayDetails.height)")
+//        print("overlay details: x: \(overlay.xAxis), y: \(overlay.yAxis), width: \(overlay.width), height: \(overlay.height), rawX:\(overlayDetails.xAxis), rawY:\(overlayDetails.yAxis), rawWidth:\(overlayDetails.width), rawHeight:\(overlayDetails.height)")
 
         return ZStack {
             Rectangle()
