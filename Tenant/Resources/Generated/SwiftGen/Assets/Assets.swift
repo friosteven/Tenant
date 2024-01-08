@@ -32,6 +32,7 @@ internal enum Asset {
     internal static let fefefe = ColorAsset(name: "fefefe")
   }
   internal enum ImageAssets {
+    internal static let cartFillBadgePlus = ImageAsset(name: "cart.fill.badge.plus")
     internal static let floorplan = ImageAsset(name: "floorplan")
   }
 }

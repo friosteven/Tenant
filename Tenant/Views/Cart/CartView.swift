@@ -13,9 +13,11 @@ struct CartView: View {
     
     var body: some View {
         VStack {
-            ForEach(cartVM.cartItems, id: \.uuid) { cartItem in
-                CustomCellView(product: cartItem.toProductModel(),
-                               style: .favorites)
+            ScrollView(showsIndicators: false) {
+                ForEach(cartVM.cartItems, id: \.uuid) { cartItem in
+                    CustomCellView(product: cartItem.toProductModel(),
+                                   style: .favorites)
+                }
             }
         }
         .onAppear(perform: {

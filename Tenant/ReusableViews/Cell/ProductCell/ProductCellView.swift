@@ -11,19 +11,25 @@ import SwiftUI
 struct ProductCellView: View {
     var productDetails: Product?
     var body: some View {
-        VStack(alignment: .center, spacing: 8) {
-            KFImage(URL(string: productDetails?.imageURL ?? ""))
-                .resizable()
-                .scaledToFit()
-                .frame(height: 120)
+        VStack(alignment: .leading, spacing: 8) {
+            ZStack {
+                KFImage(URL(string: productDetails?.imageURL ?? ""))
+                    .resizable()
+                    .scaledToFit()
+
+                RoundedRectangle(cornerRadius: 32)
+                    .stroke(Color.gray, lineWidth: 0.3)
+            }
             Text(productDetails?.productName ?? "")
-                .font(.headline)
+                .style(size: 12)
                 .multilineTextAlignment(.leading)
                 .lineLimit(3)
+
             HStack {
-                Text("$\(productDetails?.unitPrice?.description ?? "")")
+                Text("$\(productDetails?.unitPrice?.description ?? "")").style(size: 16, color: .red)
                 //                Image("")
             }
+
         }
         .padding(EdgeInsets(top: 8,
                             leading: 4,

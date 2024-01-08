@@ -19,9 +19,9 @@ struct ProductGridView: View {
                         NavigationLink(destination: ProductDetailsView(productDetails: data), label: {
                             ProductCellView(productDetails: data)
                         })
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray, lineWidth: 1)
-                    }.frame(height: 200)
+//                        RoundedRectangle(cornerRadius: 8)
+//                            .stroke(Color.gray, lineWidth: 0.5)
+                    }.frame(height: 250)
                 }
             }
         }
