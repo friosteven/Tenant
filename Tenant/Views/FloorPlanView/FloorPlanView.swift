@@ -74,14 +74,14 @@ struct FloorPlanView: View {
                         action: {
                 }))
             })
-            .toolbar {
-                // TODO: - ADD CACHING WITH COREDATA
-                ToolbarItem(placement: .navigationBarTrailing, content: {
-                    Button("Refresh", action: {
-                        loadData()
-                    })
-                })
-            }
+//            .toolbar {
+//                // TODO: - ADD CACHING WITH COREDATA
+//                ToolbarItem(placement: .navigationBarTrailing, content: {
+//                    Button("Refresh", action: {
+//                        loadData()
+//                    })
+//                })
+//            }
         })
     }
 }

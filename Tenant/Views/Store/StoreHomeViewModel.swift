@@ -33,7 +33,7 @@ extension StoreHomeViewModel {
                     endpoint: FakeStoreEndpoint.getFakeStoreProducts,
                     responseModel: FakeStoreOutputModel.self
                 )
-                var value = try result.get()
+                let value = try result.get()
                 self.productsArr = value.map { data in
                     data.toProduct()
                 }
@@ -48,7 +48,7 @@ extension StoreHomeViewModel {
                     endpoint: FakeStoreEndpoint.getFakeStoreProductsWithLimit(limit: limit),
                     responseModel: FakeStoreOutputModel.self
                 )
-                var value = try result.get()
+                let value = try result.get()
                 self.productsWithLimitArr = value.map { data in
                     data.toProduct()
                 }
