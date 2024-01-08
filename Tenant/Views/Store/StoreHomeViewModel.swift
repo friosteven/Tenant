@@ -9,10 +9,11 @@ import Foundation
 
 @MainActor
 class StoreHomeViewModel: ObservableObject {
-    @Published var service = FakeStoreService()
-    @Published var productsArr: ProductsOutputModel = []
-   
-    @Published var productsWithLimitArr: ProductsOutputModel = []
+    @Published private var service = FakeStoreService()
+
+    @Published var productsArr: Products = []
+    @Published var productsWithLimitArr: Products = []
+
     @Published var categories: [String]? = []
 
     func getProducts() {
@@ -20,9 +21,12 @@ class StoreHomeViewModel: ObservableObject {
             do {
                 let result = await self.service.sendRequest(
                     endpoint: FakeStoreEndpoint.getFakeStoreProducts,
-                    responseModel: ProductsOutputModel.self
+                    responseModel: FakeStoreOutputModel.self
                 )
-                self.productsArr = try result.get()
+                var value = try result.get()
+                self.productsArr = value.map { data in
+                    data.toProduct()
+                }
             }
         }
     }
@@ -32,9 +36,12 @@ class StoreHomeViewModel: ObservableObject {
             do {
                 let result = await self.service.sendRequest(
                     endpoint: FakeStoreEndpoint.getFakeStoreProductsWithLimit(limit: limit),
-                    responseModel: ProductsOutputModel.self
+                    responseModel: FakeStoreOutputModel.self
                 )
-                self.productsWithLimitArr = try result.get()
+                var value = try result.get()
+                self.productsWithLimitArr = value.map { data in
+                    data.toProduct()
+                }
             }
         }
     }
@@ -65,9 +72,4 @@ class StoreHomeViewModel: ObservableObject {
             }
         }
     }
-
-//    func setFilteredProductsArrByCategory() -> ProductsOutputModel {
-//
-//        return viewModel.productsArr.filter { ($0.title?.lowercased() ?? "").contains($keyword.wrappedValue.lowercased()) }
-//    }
 }

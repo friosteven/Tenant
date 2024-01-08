@@ -9,19 +9,19 @@ import Kingfisher
 import SwiftUI
 
 struct ProductCellView: View {
-    var productDetails: ProductsOutputModelElement?
+    var productDetails: Product?
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
-            KFImage(URL(string: productDetails?.image ?? ""))
+            KFImage(URL(string: productDetails?.imageURL ?? ""))
                 .resizable()
                 .scaledToFit()
                 .frame(height: 120)
-            Text(productDetails?.title ?? "")
+            Text(productDetails?.productName ?? "")
                 .font(.headline)
                 .multilineTextAlignment(.leading)
                 .lineLimit(3)
             HStack {
-                Text("$\(productDetails?.price?.description ?? "")")
+                Text("$\(productDetails?.unitPrice?.description ?? "")")
                 //                Image("")
             }
         }

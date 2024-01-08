@@ -67,15 +67,15 @@ extension StoreMainView {
 }
 
 extension StoreMainView {
-    private func filterByKeyword() -> ProductsOutputModel {
+    private func filterByKeyword() -> Products {
         if keyword.isEmpty {
             return viewModel.productsArr
         } else {
-            return viewModel.productsArr.filter { ($0.title?.lowercased() ?? "").contains($keyword.wrappedValue.lowercased()) }
+            return viewModel.productsArr.filter { ($0.productName.lowercased()).contains($keyword.wrappedValue.lowercased()) }
         }
     }
 
-    private func filterByKeywordAndCategory() -> ProductsOutputModel {
+    private func filterByKeywordAndCategory() -> Products {
         if selectedCategory != "All" {
             return filterByKeyword().filter {
                 ($0.category ?? "").lowercased().contains(selectedCategory.lowercased())

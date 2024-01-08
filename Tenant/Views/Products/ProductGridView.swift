@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ProductGridView: View {
-    var products: ProductsOutputModel
+    var products: Products
     @State private var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: twoColumnGrid) {
-                ForEach(products, id: \.uuid) { data in
+                ForEach(products, id: \.id) { data in
                     ZStack {
                         NavigationLink(destination: ProductDetailsView(productDetails: data), label: {
                             ProductCellView(productDetails: data)

@@ -21,12 +21,12 @@ struct ProductsView: View {
     @State private var presentAlert = false
     @State private var productQuantity = ""
     @State private var searchKeyword = ""
-    @State private var productsModel: ProductsOutputModel = .init()
-    private var filteredResults: ProductsOutputModel {
+    @State private var products: Products = .init()
+    private var filteredResults: Products {
         if searchKeyword.isEmpty {
-            return productsModel
+            return products
         } else {
-            return productsModel.filter { ($0.title ?? "").contains($searchKeyword.wrappedValue)
+            return products.filter { ($0.productName ).contains($searchKeyword.wrappedValue)
             }
         }
     }
@@ -82,7 +82,7 @@ extension ProductsView {
 //        NetworkManager().fetchProducts(completion: { result in
 //            switch result {
 //            case let .success(response):
-//                self.productsModel = response
+//                self.fakeStoreModel = response
 //                print(response)
 //            case let .failure(error):
 //                print(error.localizedDescription)

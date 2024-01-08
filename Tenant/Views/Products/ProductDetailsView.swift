@@ -9,19 +9,20 @@ import Kingfisher
 import SwiftUI
 
 struct ProductDetailsView: View {
-    var productDetails: ProductsOutputModelElement?
+    var productDetails: Product?
 //    @EnvironmentObject var cartItems: Cart
     //    @State private var trailingDesc = ""
     //    @State private var lineLimit: Int? = nil
 
 //    @StateObject private var cartCDM = CartCDManager()
+    
     @StateObject private var cartVM = CartViewModel()
 
     @State private var quantity: String = "0"
     var body: some View {
         VStack {
             VStack(alignment: .center) {
-                KFImage(URL(string: productDetails?.image ?? ""))
+                KFImage(URL(string: productDetails?.imageURL ?? ""))
                     //            KFImage(URL(string: productDetails?.image ?? ""))
                     .resizable()
                     .scaledToFit()
@@ -30,35 +31,35 @@ struct ProductDetailsView: View {
             }
             VStack(alignment: .leading) {
                 /// Title
-                Text(productDetails?.title ?? L10n.Placeholder.title)
+                Text(productDetails?.productName ?? L10n.Placeholder.title)
                     .font(Font.custom("Poppins-Bold", size: 16))
                 /// Price
                 HStack {
-                    Text("$\(productDetails?.price?.description ?? "109")")
+                    Text("$\(productDetails?.unitPrice?.description ?? "109")")
                         .font(Font.custom("Poppins-Bold", size: 20))
                         .foregroundColor(.red)
                         .padding(.top, 16)
                         .multilineTextAlignment(.leading)
                     Spacer()
                 }
-                HStack {
-                    HStack {
-                        Text("Ratings: ")
-                            .font(Font.custom("Poppins-Bold", size: 16))
-                        Text(productDetails?.rating.rate?.description ?? "")
-                            .font(Font.custom("Poppins-Bold", size: 16))
-                    }
-                    Divider().frame(height: 16)
-                    HStack {
-                        Text(productDetails?.rating.count?.description ?? "")
-                            .font(Font.custom("Poppins-Bold", size: 16))
-                        Image(systemName: "eye")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 16, height: 16)
-                    }
-                    Spacer()
-                }
+//                HStack {
+//                    HStack {
+//                        Text("Ratings: ")
+//                            .font(Font.custom("Poppins-Bold", size: 16))
+//                        Text(productDetails?.rating.rate?.description ?? "")
+//                            .font(Font.custom("Poppins-Bold", size: 16))
+//                    }
+//                    Divider().frame(height: 16)
+//                    HStack {
+//                        Text(productDetails?.rating.count?.description ?? "")
+//                            .font(Font.custom("Poppins-Bold", size: 16))
+//                        Image(systemName: "eye")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .frame(width: 16, height: 16)
+//                    }
+//                    Spacer()
+//                }
                 Text(productDetails?.productDescription ?? L10n.Placeholder.details)
                     .font(Font.custom("Poppins-Bold", size: 16))
                     .padding(.top, 16)

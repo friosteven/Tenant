@@ -8,17 +8,17 @@
 import Foundation
 
 protocol FakeStoreServicesProtocol {
-    func getFakeStoreProducts() async -> Result<ProductsOutputModel, RequestError>
-    func getFakeStoreProductsWithLimit(limit: Int) async -> Result<ProductsOutputModel, RequestError>
+    func getFakeStoreProducts() async -> Result<FakeStoreOutputModel, RequestError>
+    func getFakeStoreProductsWithLimit(limit: Int) async -> Result<FakeStoreOutputModel, RequestError>
     func getFakeStoreCategories() async -> Result<[String], RequestError>
 }
 
 struct FakeStoreService: HTTPClient, FakeStoreServicesProtocol {
-    func getFakeStoreProducts() async -> Result<ProductsOutputModel, RequestError> {
-        return await sendRequest(endpoint: FakeStoreEndpoint.getFakeStoreProducts, responseModel: ProductsOutputModel.self)
+    func getFakeStoreProducts() async -> Result<FakeStoreOutputModel, RequestError> {
+        return await sendRequest(endpoint: FakeStoreEndpoint.getFakeStoreProducts, responseModel: FakeStoreOutputModel.self)
     }
-    func getFakeStoreProductsWithLimit(limit: Int) async -> Result<ProductsOutputModel, RequestError> {
-        return await sendRequest(endpoint: FakeStoreEndpoint.getFakeStoreProductsWithLimit(limit: limit), responseModel: ProductsOutputModel.self)
+    func getFakeStoreProductsWithLimit(limit: Int) async -> Result<FakeStoreOutputModel, RequestError> {
+        return await sendRequest(endpoint: FakeStoreEndpoint.getFakeStoreProductsWithLimit(limit: limit), responseModel: FakeStoreOutputModel.self)
     }
     func getFakeStoreCategories() async -> Result<[String], RequestError> {
         return await sendRequest(endpoint: FakeStoreEndpoint.getFakeStoreCategories, responseModel: [String].self)

@@ -6,38 +6,30 @@
 //
 
 import Foundation
+import SwiftUI
 
 @MainActor
 class CartViewModel: ObservableObject {
 
-    var cartCDManager = CartCDManager()
-
     @Published var cartItems: [CartModel] = []
+    @ObservedObject var cartCDManager = CartCDManager()
 
     func getCartItems() {
-        cartItems = cartCDManager.readItems()
+        cartCDManager.readItems()
+        cartItems = cartCDManager.cartItems
     }
 
-    func saveToCart(product: ProductsOutputModelElement) {
+    func saveToCart(product: Product) {
         let cart = CartModel(
-            id: UUID(),
-            productID: product.id ?? 0,
-            productName: product.title ?? "",
-            unitPrice: product.price ?? 0,
-            storeID: product.id ?? 0,
+            id: product.id,
+            productName: product.productName ,
+            productCode: "",
+            unitPrice: product.unitPrice ?? 0,
+            tenantID: 0,
             quantity: 1,
-            imageURL: "")
+            imageURL: product.imageURL ?? "")
 
         cartCDManager.saveItem(item: cart)
-    }
-
-    func modelHelper(using data: CartModel) -> ProductsOutputModelElement {
-        return ProductsOutputModelElement(id: Int(data.productID),
-                                   title: data.productName,
-                                   price: data.unitPrice,
-                                   productDescription: "",
-                                   category: "",
-                                   image: data.imageURL,
-                                   rating: Rating(rate: 0, count: 0))
+        cartCDManager.readItems()
     }
 }

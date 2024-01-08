@@ -35,7 +35,7 @@ class CoreDataManager: ObservableObject {
         }
     }
 
-    func readAllData() -> [CartEntity] {
+    func readData() -> [CartEntity] {
         let request: NSFetchRequest<CartEntity> = CartEntity.fetchRequest()
         do {
             return try viewContext.fetch(request)

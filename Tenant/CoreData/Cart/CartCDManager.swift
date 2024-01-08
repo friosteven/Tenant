@@ -7,20 +7,21 @@
 
 import Foundation
 import CoreData
-
+import SwiftUI
 
 //should only be used by viewmodels
 class CartCDManager: ObservableObject {
 
-    func readItems() -> [CartModel] {
-        let data = CoreDataManager.shared.readAllData().map(CartCDModel.init)
+    @Published var cartItems: [CartModel] = []
 
-        return data.map { value in
-            CartModel(id: UUID(),
-                      productID: value.productID,
+    func readItems() {
+        let data = CoreDataManager.shared.readData().map(CartCDModel.init)
+        cartItems = data.map { value in
+            CartModel(id: value.id,
                       productName: value.productName,
+                      productCode: value.productCode,
                       unitPrice: value.unitPrice,
-                      storeID: value.storeID,
+                      tenantID: value.tenantID,
                       quantity: value.quantity,
                       imageURL: value.imageURL)
         }
@@ -32,11 +33,10 @@ class CartCDManager: ObservableObject {
         cart.imageURL = item.imageURL
         cart.unitPrice = Float(item.unitPrice)
         cart.quantity = Int16(item.quantity)
-        cart.storeID = Int16(item.storeID)
+        cart.tenantID = Int16(item.tenantID)
         cart.productName = item.productName
-
-        CoreDataManager
-            .shared.saveData()
+        
+        CoreDataManager.shared.saveData()
 
     }
 }

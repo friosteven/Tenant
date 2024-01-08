@@ -10,14 +10,10 @@ import SwiftUI
 struct StoreHomeView: View {
     @State private var categories: [String] = []
 
-    @State private var productsModel: ProductsOutputModel = .init()
     var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
 
     @StateObject private var viewModel = StoreHomeViewModel()
-    @State private var products = ProductsOutputModel.self
     @State private var goToNextScreen = false
-
-
 
     var body: some View {
             ScrollView(showsIndicators: false) {

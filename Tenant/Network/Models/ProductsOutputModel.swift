@@ -1,37 +1,35 @@
 //
-//  ProductsOutputModel.swift
+//  Products.swift
 //  Tenant
 //
-//  Created by Steven Frio on 11/27/23.
+//  Created by Steven Frio on 1/8/24.
 //
 
 import Foundation
 
-struct ProductsInputModel: Codable {
-    let limit: Int
-}
-
+// model based on supabase/products table
 struct ProductsOutputModelElement: Codable, Identifiable {
-    let uuid = UUID()
     let id: Int?
-    let title: String?
-    let price: Float?
+    let productName: String
+    let unitPrice: Float?
     let productDescription, category: String?
-    let image: String?
-    let rating: Rating
+    let productCode: String
+    let isAvailable, hasQuantity: Bool
+    let quantity: Int?
+    let imageURL: String?
+    let tenantID: Int
 
     enum CodingKeys: String, CodingKey {
-        case id, title, price
+        case id, quantity, category
+        case unitPrice = "unit_price"
+        case productName = "product_name"
         case productDescription = "description"
-        case category, image, rating
+        case productCode = "product_code"
+        case isAvailable = "is_available"
+        case hasQuantity = "has_quantity"
+        case tenantID = "tenant_id"
+        case imageURL = "image_url"
     }
-}
-
-// MARK: - Rating
-
-struct Rating: Codable {
-    let rate: Float?
-    let count: Int?
 }
 
 typealias ProductsOutputModel = [ProductsOutputModelElement]

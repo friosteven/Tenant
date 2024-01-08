@@ -9,7 +9,7 @@ import Kingfisher
 import SwiftUI
 
 struct CustomCellView: View {
-    var product: ProductsOutputModelElement?
+    var product: Product?
     var style: CustomCellViewStyle? = .normal
 
     var body: some View {
@@ -22,32 +22,32 @@ struct CustomCellView: View {
 
             GeometryReader { geometry in
                 HStack {
-                    KFImage(URL(string: product?.image ?? ""))
+                    KFImage(URL(string: product?.imageURL ?? ""))
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(8)
                         .frame(width: geometry.size.width / 3)
                     VStack(alignment: .leading) {
                         Spacer()
-                        Text(product?.title ?? "")
+                        Text(product?.productName ?? "")
                             .font(Font.custom("Poppins-Bold", size: 16))
                         Spacer()
                         HStack {
-                            Text("$\(product?.price?.description ?? "")")
+                            Text("$\(product?.unitPrice?.description ?? "")")
                                 .font(Font.custom("Poppins-Bold", size: 14))
                                 .foregroundColor(.red)
                             Spacer()
 
-                            if style == .normal {
-                                HStack {
-                                    Text(product?.rating.count?.description ?? "")
-                                        .font(Font.custom("Poppins-Bold", size: 14))
-                                    Image(systemName: "eye")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 16, height: 16)
-                                }
-                            }
+//                            if style == .normal {
+//                                HStack {
+//                                    Text(product?.rating.count?.description ?? "")
+//                                        .font(Font.custom("Poppins-Bold", size: 14))
+//                                    Image(systemName: "eye")
+//                                        .resizable()
+//                                        .scaledToFit()
+//                                        .frame(width: 16, height: 16)
+//                                }
+//                            }
                         }
                         Spacer()
                     }
