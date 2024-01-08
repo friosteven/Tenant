@@ -14,6 +14,7 @@ struct StoreHomeView: View {
 
     @StateObject private var viewModel = StoreHomeViewModel()
     @State private var goToNextScreen = false
+    var tenantID: Int
 
     var body: some View {
             ScrollView(showsIndicators: false) {
@@ -23,8 +24,9 @@ struct StoreHomeView: View {
                 }
             }.padding(16)
         .onAppear(perform: {
-            viewModel.getCategories()
-            viewModel.getProductsWithLimit(limit: 5)
+            if tenantID == Constant.fakeStoreTenantID {
+                viewModel.initFakeStore()
+            }
         })
     }
 }
@@ -72,6 +74,6 @@ extension StoreHomeView {
 
 struct StoreHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        StoreHomeView()
+        StoreHomeView(tenantID: 0)
     }
 }

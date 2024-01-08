@@ -16,6 +16,16 @@ class StoreHomeViewModel: ObservableObject {
 
     @Published var categories: [String]? = []
 
+
+}
+
+// fakestore api related functions
+extension StoreHomeViewModel {
+    func initFakeStore() {
+        getCategories()
+        getProductsWithLimit(limit: 5)
+    }
+    
     func getProducts() {
         Task {
             do {

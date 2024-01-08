@@ -26,7 +26,7 @@ struct FloorPlanView: View {
     var body: some View {
         NavigationView(content: {
             ZStack {
-                NavigationLink(destination: StoreHomeView().navigationTitle(tenant?.name ?? ""),
+                NavigationLink(destination: StoreHomeView(tenantID: tenant?.id ?? 0).navigationTitle(tenant?.name ?? ""),
                                isActive: $isStoreHomeViewActive) {
                     EmptyView()
                 }

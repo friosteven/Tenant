@@ -20,7 +20,7 @@ struct FakeStoreOutputModelElement: Codable, Identifiable {
     let productDescription, category: String?
     let image: String?
     let rating: Rating
-    let tenantID: Int = 64
+    let tenantID: Int = Constant.fakeStoreTenantID
 
     enum CodingKeys: String, CodingKey {
         case id, title, price
@@ -31,7 +31,7 @@ struct FakeStoreOutputModelElement: Codable, Identifiable {
 
 extension FakeStoreOutputModelElement {
     func toProduct() -> Product {
-        let tenantID = 64
+        let tenantID = Constant.fakeStoreTenantID
         let productCode = "\(tenantID)\(self.id ?? 0)"
 
         return Product(id: self.id ?? 0,
